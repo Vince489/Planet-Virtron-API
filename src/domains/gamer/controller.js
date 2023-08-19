@@ -51,7 +51,7 @@ const authenticateGamer = async (data, res) => {
       throw Error("Invalid password entered!");
     }
 
-    // create jwt token and add to cookie
+    // create jwt token 
     const tokenData = { gamerId: fetchedGamer._id, gamerTag };
     const token = await createJWT(tokenData);
 

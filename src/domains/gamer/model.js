@@ -22,6 +22,10 @@ const gamerSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Account',
   },
+  fighters: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Fighter',
+  }],
   verified: { 
     type: Boolean, 
     default: false 
@@ -29,5 +33,4 @@ const gamerSchema = new mongoose.Schema({
 });
 
 const Gamer = mongoose.model('Gamer', gamerSchema);
-
 module.exports = Gamer;

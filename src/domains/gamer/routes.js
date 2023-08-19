@@ -25,6 +25,18 @@ router.get('/hello', auth, (req, res) => {
   }
 });
 
+router.get("/dashboard", auth, async (req, res) => {
+  try {
+    // access the authenticated gamer via req.user
+    const gamer = req.user;
+    console.log(gamer);
+
+    res.status(200).json(gamer);
+  } catch (error) {
+    res.status(500).json({ error: "An error occurred during authentication." });
+  }
+})
+
 // protected route
 router.get("/protected", auth, (req, res) => {
   try {
@@ -50,6 +62,12 @@ router.get('/:gamerTag', async (req, res) => {
     return res.status(500).send({ error: 'Internal server error' });
   }
 });
+
+
+
+
+
+
 
 // Sign-up route
 router.post("/signup", async (req, res) => {
@@ -112,6 +130,14 @@ router.post("/", async (req, res) => {
     res.status(400).send(error.message);
   }
 });
+
+
+    
+
+
+
+
+
 
 
 // Logout route

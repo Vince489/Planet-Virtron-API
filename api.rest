@@ -2,7 +2,7 @@
 GET http://localhost:4040/api/v1/gamer/
 
 ###
-GET http://localhost:4040/api/v1/gamer/hello
+GET http://localhost:4040/api/v1/gamer/dashboard
 
 
 ###
@@ -44,7 +44,7 @@ Content-Type: application/json
 
 // redo password protected
 ###
-GET http://localhost:4040/api/v1/gamer/private_data?eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJnYW1lcklkIjoiNjRkZmYyM2E4ZDc1ZDQ5MjY0NzdkODk5IiwiZ2FtZXJUYWciOiJQcmluY2UiLCJpYXQiOjE2OTI0NTY0MjQsImV4cCI6MTY5NTA0ODQyNH0.FCCWoREtkOlMz3gOsXXFXBPscAQUpK1DQ0G5HMM_0_4
+GET http://localhost:4040/api/v1/gamer/protected
 Content-Type: application/json
 
 // forgot password
@@ -67,3 +67,7 @@ Content-Type: application/json
   "otp": "4792",
   "newPassword": "12345678"
 }
+
+###
+
+POST http://localhost:4040/api/v1/gamer/logout
