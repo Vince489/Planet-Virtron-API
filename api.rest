@@ -1,0 +1,69 @@
+// get all users
+GET http://localhost:4040/api/v1/gamer/
+
+###
+GET http://localhost:4040/api/v1/gamer/hello
+
+
+###
+// signup
+POST http://localhost:4040/api/v1/gamer/signup
+Content-Type: application/json
+
+{
+  "gamerTag": "Prince",
+  "email": "princevirtron@gmail.com",
+  "password": "12345678"
+}
+
+###
+// verify email
+POST http://localhost:4040/api/v1/email_verification/verify
+Content-Type: application/json
+
+{
+  "email": "princevirtron@gmail.com",
+  "otp": "4395"
+}
+
+
+###
+// login
+POST http://localhost:4040/api/v1/gamer
+Content-Type: application/json
+
+{
+  "gamerTag": "Prince",
+  "password": "12345678"
+}
+
+###
+// logout
+POST http://localhost:4040/api/v1/gamer/logout
+Content-Type: application/json
+
+// redo password protected
+###
+GET http://localhost:4040/api/v1/gamer/private_data?eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJnYW1lcklkIjoiNjRkZmYyM2E4ZDc1ZDQ5MjY0NzdkODk5IiwiZ2FtZXJUYWciOiJQcmluY2UiLCJpYXQiOjE2OTI0NTY0MjQsImV4cCI6MTY5NTA0ODQyNH0.FCCWoREtkOlMz3gOsXXFXBPscAQUpK1DQ0G5HMM_0_4
+Content-Type: application/json
+
+// forgot password
+###
+POST http://localhost:4040/api/v1/forgot_password/
+Content-Type: application/json
+
+{
+  "email": "princevirtron@gmail.com"
+}
+
+
+// password reset
+###
+POST http://localhost:4040/api/v1/forgot_password/reset
+Content-Type: application/json
+
+{
+  "email": "princevirtron@gmail.com",
+  "otp": "4792",
+  "newPassword": "12345678"
+}
