@@ -1,6 +1,5 @@
 const Gamer = require("./model");
 const { hashData } = require("./../../utils/hashData");
-const createJWT = require("../../utils/createJWT");
 const { verifyHashedData } = require("./../../utils/hashData");
 
 
@@ -24,13 +23,13 @@ const createNewGamer = async (data) => {
     });
     // save gamer
     const createdGamer = await newGamer.save();
-    return createdGamer;
+    return {createdGamer};
   } catch (error) {
     throw error;
   }
 };
 
-const authenticateGamer = async (data, res) => {
+const authenticateGamer = async (data) => {
   try {
     const { gamerTag, password } = data;
 
@@ -50,17 +49,15 @@ const authenticateGamer = async (data, res) => {
     if (!passwordMatch) {
       throw Error("Invalid password entered!");
     }
-
-    // create jwt token 
-    const tokenData = { gamerId: fetchedGamer._id, gamerTag };
-    const token = await createJWT(tokenData);
-
-    // assign Gamer token
-    fetchedGamer.token = token;
-
-    return fetchedGamer;
+    return {
+      _id: fetchedGamer._id,
+      gamerTag: fetchedGamer.gamerTag,
+      email: fetchedGamer.email,
+      verified: fetchedGamer.verified,
+      fighters: fetchedGamer.fighters
+    }; 
   } catch (error) {
-    throw error;
+    throw error; 
   }
 };
 

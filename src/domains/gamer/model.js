@@ -15,9 +15,6 @@ const gamerSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  token: {
-    type: String,
-  },
   account: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Account',
