@@ -1,5 +1,6 @@
-// get all users
+// get all gamers
 GET http://localhost:4040/api/v1/gamer/
+
 
 ###
 GET http://localhost:4040/api/v1/gamer/dashboard
@@ -70,4 +71,4 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:4040/api/v1/gamer/logout
+POST http://localhost:4040/api/v1/account
