@@ -9,7 +9,7 @@ const Gamer = require("./model");
 // Get all gamers
 router.get("/", async (req, res) => {
   try {
-    const gamers = await Gamer.find();
+    const gamers = await Gamer.find({}, { password: 0 }); // exclude password field
     res.json(gamers);
   } catch (error) {
     res.status(500).json({ message: error });
@@ -112,7 +112,7 @@ router.post("/", async (req, res) => {
 
     // Check if gamer tag and password are empty
     if (!trimmedGamerTag || !trimmedPassword) {
-      throw Error("Empty credentials supplied!");
+      throw Error("Empty credentials supplied!"); 
     }
 
     const authenticatedGamer = await authenticateGamer({ gamerTag, password });
