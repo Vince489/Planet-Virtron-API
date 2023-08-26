@@ -24,7 +24,7 @@ Content-Type: application/json
 
 {
   "email": "princevirtron@gmail.com",
-  "otp": "4395"
+  "otp": "1140"
 }
 
 
