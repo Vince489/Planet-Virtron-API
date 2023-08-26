@@ -95,7 +95,7 @@ router.post("/signup", async (req, res) => {
 
       await sendVerificationOTPEmail(email);
 
-      res.status(201).json(newGamer);
+      res.status(201).json('Gamer created successfully! Please verify your email address.');
     }
   } catch (error) {
     res.status(400).send(error.message);
@@ -140,7 +140,7 @@ router.post("/", async (req, res) => {
 
 
 
-// Logout route
+// Logout route 
 router.post('/logout', (req, res) => {
   try {
     // Clear the JWT token cookie

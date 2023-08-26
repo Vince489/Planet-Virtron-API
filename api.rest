@@ -12,8 +12,8 @@ POST http://localhost:4040/api/v1/gamer/signup
 Content-Type: application/json
 
 {
-  "gamerTag": "Prince",
-  "email": "princevirtron@gmail.com",
+  "gamerTag": "Vince",
+  "email": "vincentcornelius489@gmail.com",
   "password": "12345678"
 }
 
@@ -24,7 +24,7 @@ Content-Type: application/json
 
 {
   "email": "princevirtron@gmail.com",
-  "otp": "1140"
+  "otp": "1679"
 }
 
 
@@ -71,4 +71,9 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:4040/api/v1/account
+POST http://localhost:4040/api/v1/otp//request-new-otp
+Content-Type: application/json
+
+{
+  "email": "bornelius489@gmail.com"
+}
