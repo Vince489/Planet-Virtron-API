@@ -27,9 +27,7 @@ Content-Type: application/json
   "otp": "1679"
 }
 
-app.use(cors({
-  origin: 'http://localhost:5173', 
-  credentials: true
+
 
 
 ###
