@@ -119,7 +119,7 @@ router.post("/", async (req, res) => {
 
     const authenticatedGamer = await authenticateGamer({ gamerTag, password });
 
-    const gamer = { gamerTag: authenticatedGamer.gamerTag, role: "gamer" };
+    const gamer = { gamer: authenticatedGamer };
 
     // Create a JWT token
     const token = await createJWT(gamer);

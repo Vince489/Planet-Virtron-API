@@ -23,6 +23,11 @@ const gamerSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Fighter',
   }],
+  roles: [{
+    type: String,
+    enum: ['gamer', 'promoter', 'admin'],
+    default: 'gamer'    
+  }],
   verified: { 
     type: Boolean, 
     default: false 
