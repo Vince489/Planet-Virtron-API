@@ -6,6 +6,8 @@ const { sendVerificationOTPEmail } = require("./../email_verification/controller
 const createJWT = require("../../utils/createJWT");
 const Gamer = require("./model");
 
+
+
 // Get all gamers
 router.get("/", async (req, res) => {
   try {
@@ -155,6 +157,8 @@ router.post('/logout', (req, res) => {
     res.status(500).json({ error: 'An error occurred during logout.' });
   }
 });
+
+
 
 
 

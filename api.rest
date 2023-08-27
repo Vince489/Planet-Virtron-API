@@ -27,6 +27,10 @@ Content-Type: application/json
   "otp": "1679"
 }
 
+app.use(cors({
+  origin: 'http://localhost:5173', 
+  credentials: true
+
 
 ###
 // login
@@ -34,7 +38,7 @@ POST http://localhost:4040/api/v1/gamer
 Content-Type: application/json
 
 {
-  "gamerTag": "Vince",
+  "gamerTag": "Theecw",
   "password": "12345678"
 }
 
