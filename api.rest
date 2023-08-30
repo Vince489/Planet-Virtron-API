@@ -36,7 +36,7 @@ POST http://localhost:4040/api/v1/gamer
 Content-Type: application/json
 
 {
-  "gamerTag": "Theecw",
+  "gamerTag": "Prince",
   "password": "12345678"
 }
 
@@ -101,4 +101,10 @@ Content-Type: application/json
 //creat a new account
 POST http://localhost:4040/api/v1/account
 Content-Type: application/json
+
+###
+// Auth route
+GET http://localhost:4040/api/v1/gamer/authenticate
+Content-Type: application/json
+
 

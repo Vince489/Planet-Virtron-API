@@ -7,6 +7,38 @@ const createJWT = require("../../utils/createJWT");
 const Gamer = require("./model");
 
 
+// Sign-up route
+router.post("/signup", async (req, res) => {
+  try {
+    let { gamerTag, email, password } = req.body;
+    gamerTag = gamerTag.trim();
+    email = email.trim();
+    password = password.trim();
+
+    if (!(gamerTag && email && password)) {
+      throw Error("Empty input fields!");
+    } else if (!/^[a-zA-Z ]*$/.test(gamerTag)) {
+      throw Error("Invalid gamerTag entered");
+    } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
+      throw Error("Invalid email entered");
+    } else if (password.length < 8) {
+      throw Error("Password is too short!");
+    } else {
+
+      await createNewGamer({
+        gamerTag,
+        email,
+        password,
+      });
+
+      await sendVerificationOTPEmail(email);
+
+      res.status(201).json('Gamer created successfully! Please verify your email address.');
+    }
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
 
 // Get all gamers
 router.get("/", async (req, res) => {
@@ -15,6 +47,18 @@ router.get("/", async (req, res) => {
     res.json(gamers);
   } catch (error) {
     res.status(500).json({ message: error });
+  }
+});
+
+// Authenticate route
+router.get('/authenticate', auth, async (req, res) => {
+  try {
+    // access the authenticated gamer via req.user
+    const gamer = req.user;
+
+    res.status(200).json(gamer);
+  } catch (error) {
+    res.status(500).json({ error: 'An error occurred during authentication.' });
   }
 });
 
@@ -66,44 +110,6 @@ router.get('/:gamerTag', async (req, res) => {
 });
 
 
-
-
-
-
-
-// Sign-up route
-router.post("/signup", async (req, res) => {
-  try {
-    let { gamerTag, email, password } = req.body;
-    gamerTag = gamerTag.trim();
-    email = email.trim();
-    password = password.trim();
-
-    if (!(gamerTag && email && password)) {
-      throw Error("Empty input fields!");
-    } else if (!/^[a-zA-Z ]*$/.test(gamerTag)) {
-      throw Error("Invalid gamerTag entered");
-    } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-      throw Error("Invalid email entered");
-    } else if (password.length < 8) {
-      throw Error("Password is too short!");
-    } else {
-
-      const newGamer = await createNewGamer({
-        gamerTag,
-        email,
-        password,
-      });
-
-      await sendVerificationOTPEmail(email);
-
-      res.status(201).json('Gamer created successfully! Please verify your email address.');
-    }
-  } catch (error) {
-    res.status(400).send(error.message);
-  }
-});
-
 // Sign in
 router.post("/", async (req, res) => {
   try {
@@ -135,6 +141,8 @@ router.post("/", async (req, res) => {
     res.status(400).send(error.message);
   }
 });
+
+
 
 
 // Logout route 
