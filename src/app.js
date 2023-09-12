@@ -9,7 +9,12 @@ const cookieParser = require("cookie-parser");
 // create server app
 const app = express();
 
-app.use(cors());
+const corsOptions = {
+  origin: ['https://planetvirtron.com', 'http://localhost:3000'],
+  credentials: true, // Allow credentials (cookies)
+};
+
+app.use(cors(corsOptions));
 app.use(express.json())
 app.use(cookieParser());
 app.use("/api/v1", routes);
