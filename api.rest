@@ -1,30 +1,31 @@
 // get all gamers
-GET http://localhost:4040/api/v1/gamer/
+GET http://localhost:4300/api/v1/gamer/
 
 
 ###
-GET http://localhost:4040/api/v1/gamer/dashboard
+// dashboard
+GET http://localhost:4300/api/v1/gamer/dashboard
 
 
 ###
 // signup
-POST http://localhost:4040/api/v1/gamer/signup
+POST http://localhost:4300/api/v1/gamer/signup
 Content-Type: application/json
 
 {
-  "gamerTag": "Vince",
-  "email": "vincentcornelius489@gmail.com",
+  "gamerTag": "Prince2",
+  "email": "princevirtron@gmail.com",
   "password": "12345678"
 }
 
 ###
 // verify email
-POST http://localhost:4040/api/v1/email_verification/verify
+POST http://localhost:4300/api/v1/email_verification/verify
 Content-Type: application/json
 
 {
   "email": "princevirtron@gmail.com",
-  "otp": "1679"
+  "otp": "1113"
 }
 
 
@@ -32,11 +33,11 @@ Content-Type: application/json
 
 ###
 // login
-POST http://localhost:4040/api/v1/gamer
+POST http://localhost:4300/api/v1/gamer
 Content-Type: application/json
 
 {
-  "gamerTag": "Prince",
+  "gamerTag": "Prince2",
   "password": "12345678"
 }
 

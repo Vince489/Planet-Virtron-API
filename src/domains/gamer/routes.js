@@ -109,7 +109,6 @@ router.get('/:gamerTag', async (req, res) => {
   }
 });
 
-
 // Sign in
 router.post("/", async (req, res) => {
   try {
@@ -146,9 +145,6 @@ router.post("/", async (req, res) => {
     res.status(400).send(error.message);
   }
 });
-
-
-
 
 // Logout route 
 router.post('/logout', (req, res) => {
