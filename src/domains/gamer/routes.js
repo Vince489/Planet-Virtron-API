@@ -131,7 +131,12 @@ router.post("/", async (req, res) => {
     const token = await createJWT(gamer);
 
     // Set the token as a cookie
-    res.cookie("token", token, { httpOnly: true });
+    res.cookie("token", token, { 
+      httpOnly: true,
+      sameSite: "None",
+      secure: true,
+      expires: new Date(Date.now() + 3600000)
+    });
 
     res.status(200).json({
       authenticatedGamer: authenticatedGamer,
