@@ -134,7 +134,7 @@ router.post("/", async (req, res) => {
       httpOnly: true,
       sameSite: "None",
       secure: true,
-      expires: new Date(Date.now() + 3600000)
+      expires: null
     });
 
     res.status(200).json({
