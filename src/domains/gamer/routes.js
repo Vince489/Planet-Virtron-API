@@ -52,7 +52,7 @@ router.get("/", async (req, res) => {
 });
 
 // new auth route
-router.get('/authenticate', verifyToken, async (req, res) => {
+router.get('/authenticate2', verifyToken, async (req, res) => {
   try {
     // Access the authenticated user's data from the req.user object
     const userData = req.user;
