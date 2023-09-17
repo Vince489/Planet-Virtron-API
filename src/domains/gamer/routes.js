@@ -50,6 +50,18 @@ router.get("/", async (req, res) => {
   }
 });
 
+// new auth route
+router.get('/authenticate2', verifyToken, (req, res) => {
+  try {
+    // Access the authenticated user's data from the req.user object
+    const userData = req.user;
+
+    res.status(200).json(userData);
+  } catch (error) {
+    res.status(500).json({ error: 'An error occurred during authentication.' });
+  }
+});
+
 // Authenticate route
 router.get('/authenticate', auth, async (req, res) => {
   try {
