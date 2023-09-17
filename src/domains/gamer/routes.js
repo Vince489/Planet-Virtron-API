@@ -52,12 +52,26 @@ router.get("/", async (req, res) => {
 });
 
 // new auth route
-router.get('/authenticate2', verifyToken, (req, res) => {
+router.get('/authenticate', verifyToken, async (req, res) => {
   try {
     // Access the authenticated user's data from the req.user object
     const userData = req.user;
 
-    res.status(200).json(userData);
+    // Find the gamer in the database using the gamer's unique identifier
+    const gamer = await Gamer.findOne({ gamerTag: userData.gamerTag });
+
+    if (!gamer) {
+      return res.status(404).json({ error: 'Gamer not found' });
+    }
+
+    // You can customize the gamer data that you want to send to the frontend
+    const gamerDataForFrontend = {
+      gamerTag: gamer.gamerTag,
+      email: gamer.email,
+      // Add other properties as needed
+    };
+
+    res.status(200).json(gamerDataForFrontend);
   } catch (error) {
     res.status(500).json({ error: 'An error occurred during authentication.' });
   }
