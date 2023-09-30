@@ -13,8 +13,8 @@ POST http://localhost:4300/api/v1/gamer/signup
 Content-Type: application/json
 
 {
-  "gamerTag": "Prince2",
-  "email": "princevirtron@gmail.com",
+  "gamerTag": "Vince",
+  "email": "vincentcornelius489@gmail.com",
   "password": "12345678"
 }
 
@@ -24,8 +24,8 @@ POST http://localhost:4300/api/v1/email_verification/verify
 Content-Type: application/json
 
 {
-  "email": "princevirtron@gmail.com",
-  "otp": "1113"
+  "email": "vincentcornelius489@gmail.com",
+  "otp": "6750"
 }
 
 
@@ -37,7 +37,7 @@ POST http://localhost:4300/api/v1/gamer
 Content-Type: application/json
 
 {
-  "gamerTag": "Prince2",
+  "gamerTag": "Vince",
   "password": "12345678"
 }
 

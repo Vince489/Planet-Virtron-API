@@ -41,6 +41,48 @@ router.post("/signup", async (req, res) => {
   }
 });
 
+// Sign in
+router.post("/", async (req, res) => {
+  try {
+    const { gamerTag, password } = req.body;
+
+    const trimmedGamerTag = gamerTag.trim();
+    const trimmedPassword = password.trim();
+
+    // Check if gamer tag and password are empty
+    if (!trimmedGamerTag || !trimmedPassword) {
+      throw Error("Empty credentials supplied!"); 
+    }
+
+    const authenticatedGamer = await authenticateGamer({ gamerTag, password });
+
+    const gamer = { gamer: authenticatedGamer };
+
+    // Create a JWT token
+    const token = await createJWT(gamer);
+
+    // Set the token as a cookie
+    res.cookie("token", token, { 
+      httpOnly: true,
+      sameSite: "None",
+      secure: true,
+      expires: new Date(Date.now() + 3600000),
+      path: '/'
+    });
+
+    res.status(200).json({
+      authenticatedGamer: authenticatedGamer,
+      token: token
+    });
+    } catch (error) {
+      // Log the error for debugging
+    console.error("Authentication error:", error);
+
+    // Send a generic error message to the client
+    res.status(400).json({ message: "Authentication failed" });
+  }
+});
+
 // Get all gamers
 router.get("/", async (req, res) => {
   try {
@@ -133,43 +175,6 @@ router.get('/:gamerTag', async (req, res) => {
     // Handle any errors that occur during the process
     console.error(error);
     return res.status(500).send({ error: 'Internal server error' });
-  }
-});
-
-// Sign in
-router.post("/", async (req, res) => {
-  try {
-    const { gamerTag, password } = req.body;
-
-    const trimmedGamerTag = gamerTag.trim();
-    const trimmedPassword = password.trim();
-
-    // Check if gamer tag and password are empty
-    if (!trimmedGamerTag || !trimmedPassword) {
-      throw Error("Empty credentials supplied!"); 
-    }
-
-    const authenticatedGamer = await authenticateGamer({ gamerTag, password });
-
-    const gamer = { gamer: authenticatedGamer };
-
-    // Create a JWT token
-    const token = await createJWT(gamer);
-
-    // Set the token as a cookie
-    res.cookie("token", token, { 
-      httpOnly: true,
-      sameSite: "None",
-      secure: true,
-      expires: null
-    });
-
-    res.status(200).json({
-      authenticatedGamer: authenticatedGamer,
-      token: token
-    });
-    } catch (error) {
-    res.status(400).send(error.message);
   }
 });
 
