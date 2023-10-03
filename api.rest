@@ -2,6 +2,10 @@
 GET http://localhost:4300/api/v1/gamer/
 
 ###
+// get all gamers
+GET http://localhost:4300/api/v1/fighters/
+
+###
 // initialize VRT coin
 POST http://localhost:4300/api/v1/vrt
 Content-Type: application/json
