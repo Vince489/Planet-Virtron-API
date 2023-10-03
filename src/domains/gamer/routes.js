@@ -64,7 +64,6 @@ router.post("/", async (req, res) => {
     // Set the token as a cookie
     res.cookie("token", token, { 
       httpOnly: true,
-      sameSite: "None",
       secure: true,
       expires: new Date(Date.now() + 3600000),
       path: '/'
