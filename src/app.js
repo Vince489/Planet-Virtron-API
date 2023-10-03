@@ -10,7 +10,7 @@ const cookieParser = require("cookie-parser");
 const app = express();
 
 const corsOptions = {
-  origin: ['https://planetvirtron.com', 'http://localhost:3000'],
+  origin: ['https://planetvirtron.com', 'http://localhost:3000', 'https://planet-virtron-api-production.up.railway.app'],
   credentials: true, // Allow credentials (cookies)
 };
 
@@ -26,7 +26,7 @@ app.use((req, res, next) => {
 
   try {
     // Verify and decode the token
-    const decoded = jwt.verify(token, 'your-secret-key'); // Use your actual secret key
+    const decoded = jwt.verify(token, 'pyyrrf'); // Use your actual secret key
 
     // Attach the decoded user information to the request object for further use
     req.user = decoded;
