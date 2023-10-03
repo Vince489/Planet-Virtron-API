@@ -2,7 +2,10 @@
 const mongoose = require('mongoose');
 
 const tokenSchema = new mongoose.Schema({
-
+  mint: {
+    type: String,
+    required: true,
+  },
   address: {
     type: String,
     required: true,

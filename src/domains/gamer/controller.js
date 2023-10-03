@@ -61,4 +61,28 @@ const authenticateGamer = async (data) => {
   }
 };
 
+const createTokenAccount = async (data) => {
+  const accountKeypair = Keypair.generate()
+
+  try {
+    const { gamerId, tokenMint } = data;
+    const gamer = await Gamer.findById(gamerId);
+    if (!gamer) {
+      throw Error("Gamer not found!");
+    }
+    const tokenAccount = new TokenAccount({
+      mint: tokenMint,
+      address: Keypair.generate().publicKey,
+      owner: gamer.account,
+      balance: 0,
+      isFrozen: false,
+      airdropReceived: false,
+    });
+    await tokenAccount.save();
+    return tokenAccount;
+  } catch (error) {
+    throw error;
+  }
+};
+
 module.exports = { createNewGamer, authenticateGamer };

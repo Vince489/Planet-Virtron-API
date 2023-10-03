@@ -1,10 +1,33 @@
 // get all gamers
 GET http://localhost:4300/api/v1/gamer/
 
+###
+// initialize VRT coin
+POST http://localhost:4300/api/v1/vrt
+Content-Type: application/json
 
 ###
-// dashboard
-GET http://localhost:4300/api/v1/gamer/dashboard
+// initialize VRT coin
+GET http://localhost:4300/api/v1/vrt
+
+
+###
+// create new block
+POST http://localhost:4300/api/v1/block
+Content-Type: application/json
+
+###
+// transfer VRT coin
+POST http://localhost:4300/api/v1/transaction/transfer
+Content-Type: application/json
+
+{
+  "senderPublicKey": "5ubXf3orDt44tZ3Kd3fQxnhkPhYkKG5cWFA74tVvyAfW", 
+  "recipientPublicKey": "3wUBnsHUaaZBUKw5CBp6RNpxFrgxBQeJB4gUyapsMYnx", 
+  "amount": "25", 
+  "privateKey": "h5ZoEaUXsPP3WNNi3GugVM7TpuLpCZcvACuEyX9PHoZ9mLgjpATsk7Vz3emByVtSmVVKToVUApxDouQ62zMCuPi"
+}
+
 
 
 ###

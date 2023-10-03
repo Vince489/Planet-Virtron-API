@@ -1,24 +1,38 @@
-// account.js
-
+// tokenAccount.js
 const mongoose = require('mongoose');
 
-const accountSchema = new mongoose.Schema({
-  publicKey: {
+const tokenAccountSchema = new mongoose.Schema({
+  mint: {
     type: String,
     required: true
   },
-  privateKey: {
+  address: {
     type: String,
     required: true
   },
-  tokenAccount: {
+  owner: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'TokenAccount',
-    required: true
+    ref: 'Account', // Reference to the user's Account
+    required: true,
   },
+  balance: {
+    type: Number,
+    default: 0
+  },
+  isFrozen: {
+    type: Boolean,
+    default: false
+  },
+  airdropReceived: {
+    type: Boolean,
+    default: false
+  },
+  transactions: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Transaction',
+  }],
 });
 
-const Account = mongoose.model('Account', accountSchema);
+const TokenAccount = mongoose.model('TokenAccount', tokenAccountSchema);
 
-module.exports = Account;
-
+module.exports = TokenAccount;

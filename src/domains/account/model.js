@@ -1,20 +1,29 @@
-// account.js
-
 const mongoose = require('mongoose');
 
 const accountSchema = new mongoose.Schema({
+  seedPhrase: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'SeedPhrase',
+  },
   publicKey: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   privateKey: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
-  tokenAccount: {
+  tokenAccounts: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'TokenAccount',
     required: true
+  }],
+  vrtAccount: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'VRTAccount',
+    // required: true
   },
 });
 
