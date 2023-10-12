@@ -2,6 +2,10 @@
 GET http://localhost:4300/api/v1/gamer/
 
 ###
+// get all gamers
+GET https://planet-virtron-api-production.up.railway.app/api/v1/gamer/
+
+###
 // get all accounts
 GET http://localhost:4300/api/v1/account
 
