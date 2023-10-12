@@ -43,6 +43,16 @@ const auth = require("./../../middleware/auth");
 //   }
 // });
 
+// get all accounts
+router.get("/", async (req, res, next) => {
+  try {
+    const accounts = await Account.find();
+    res.json(accounts);
+  } catch (error) {
+    next(error);
+  }
+});
+
 // Create a new NativeTokenAccount
 router.post("/", async (req, res, next) => {
   try {

@@ -2,8 +2,12 @@
 GET http://localhost:4300/api/v1/gamer/
 
 ###
-// get all fighters
-POST http://localhost:4300/api/v1/account/createAndAddAccount
+// get all accounts
+GET http://localhost:4300/api/v1/account
+
+###
+// create a new account 
+POST http://localhost:4300/api/v1/account/
 Content-Type: application/json
 
 
