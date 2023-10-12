@@ -18,6 +18,7 @@ const gamerSchema = new mongoose.Schema({
   account: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Account',
+    default: null,
   },
   fighters: [{
     type: mongoose.Schema.Types.ObjectId,
@@ -31,7 +32,12 @@ const gamerSchema = new mongoose.Schema({
   verified: { 
     type: Boolean, 
     default: false 
-  }
+  },
+  signupDate: {
+    type: Date,
+    required: true,
+    default: Date.now,
+  },
 });
 
 const Gamer = mongoose.model('Gamer', gamerSchema);
