@@ -2,18 +2,16 @@
 GET http://localhost:4300/api/v1/gamer/
 
 ###
-// get all gamers
-GET http://localhost:4300/api/v1/fighters/
+// get all fighters
+POST http://localhost:4300/api/v1/account/createAndAddAccount
+Content-Type: application/json
+
+
 
 ###
 // initialize VRT coin
 POST http://localhost:4300/api/v1/vrt
 Content-Type: application/json
-
-###
-// initialize VRT coin
-GET http://localhost:4300/api/v1/vrt
-
 
 ###
 // create new block
@@ -32,16 +30,14 @@ Content-Type: application/json
   "privateKey": "h5ZoEaUXsPP3WNNi3GugVM7TpuLpCZcvACuEyX9PHoZ9mLgjpATsk7Vz3emByVtSmVVKToVUApxDouQ62zMCuPi"
 }
 
-
-
 ###
 // signup
 POST http://localhost:4300/api/v1/gamer/signup
 Content-Type: application/json
 
 {
-  "gamerTag": "Vince",
-  "email": "vincentcornelius489@gmail.com",
+  "gamerTag": "Look",
+  "email": "lamaranthonyholdings@gmail.com",
   "password": "12345678"
 }
 
@@ -51,12 +47,9 @@ POST http://localhost:4300/api/v1/email_verification/verify
 Content-Type: application/json
 
 {
-  "email": "vincentcornelius489@gmail.com",
-  "otp": "6750"
+  "email": "lamaranthonyholdings@gmail.com",
+  "otp": "1327"
 }
-
-
-
 
 ###
 // login
@@ -80,7 +73,7 @@ Content-Type: application/json
 
 // forgot password
 ###
-POST http://localhost:4040/api/v1/forgot_password/
+POST http://localhost:4300/api/v1/forgot_password/
 Content-Type: application/json
 
 {
@@ -90,7 +83,7 @@ Content-Type: application/json
 
 // password reset
 ###
-POST http://localhost:4040/api/v1/forgot_password/reset
+POST http://localhost:4300/api/v1/forgot_password/reset
 Content-Type: application/json
 
 {
@@ -101,7 +94,7 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:4040/api/v1/otp//request-new-otp
+POST http://localhost:4300/api/v1/otp/request-new-otp
 Content-Type: application/json
 
 {
@@ -127,7 +120,7 @@ Content-Type: application/json
 
 ###
 //creat a new account
-POST http://localhost:4040/api/v1/account
+POST http://localhost:4300/api/v1/account
 Content-Type: application/json
 
 ###

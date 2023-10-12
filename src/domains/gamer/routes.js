@@ -193,6 +193,42 @@ router.post('/logout', (req, res) => {
   }
 });
 
+// add account to gamers account
+router.post("/add-account", async (req, res, next) => {
+  try {
+    const { gamerTag, accountId } = req.body;
+    console.log(req.body);
+
+    // Find the gamer's account based on their gamerTag
+    const gamer = await Gamer.findOne({ gamerTag: gamerTag });
+
+    if (!gamer) {
+      return res.status(404).json({ message: 'Gamer account not found' });
+    }
+
+    // Check if the account with the provided accountId exists
+    const existingAccount = await Account.findById(accountId);
+
+    if (!existingAccount) {
+      return res.status(404).json({ message: 'Account not found' });
+    }
+
+
+ 
+    // Associate the existing account with the gamer's account
+    gamer.account = existingAccount._id;
+
+    // Save the updated gamer's account
+    await gamer.save();
+
+    res.status(200).json({ message: 'Account associated with gamer successfully' });
+  } catch (error) {
+    console.error(error); // Log the error for debugging
+    next(error);
+  }
+});
+
+
 
 
 

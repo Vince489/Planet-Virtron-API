@@ -43,18 +43,17 @@ const auth = require("./../../middleware/auth");
 //   }
 // });
 
-// Create a new account with an associated token account
+// Create a new NativeTokenAccount
 router.post("/", async (req, res, next) => {
   try {
     // Generate a new key pair and seed phrase
     const keypair = Keypair.generate();
     const seedPhrase = Mnemonic.generate();
 
-
     // Create a new seed phrase document
     const newSeedPhrase = new SeedPhrase({
       seedPhrase: seedPhrase.seedPhrase,
-    });
+    }); 
 
     // Save the new seed phrase to the database
     await newSeedPhrase.save();
@@ -66,35 +65,27 @@ router.post("/", async (req, res, next) => {
       privateKey: keypair.privateKey,
     });
 
+    // Generate a new public key for the token account
+    const tokenAccountPublicKey = Keypair.generate().publicKey;
+
     // Save the new account to the database
     await newAccount.save();
 
-    // Generate a new public key for the token account
-    // const tokenAccountPublicKey = Keypair.generate().publicKey;
+    // Retrieve the seed phrase document from the database using its ID
+    const retrievedSeedPhrase = await SeedPhrase.findById(newSeedPhrase._id);
 
-    // Create a new TokenAccount associated with the VRT mint
-    const newNativeAccount = new VRTAccount({
-      owner: newAccount.publicKey, // Reference the saved account document
-      balance: 0, // Set the initial balance to zero
-      transactions: []
+    // Respond with the newly created account data and the seed phrase
+    res.status(201).json({
+      account: newAccount,
+      seedPhrase: retrievedSeedPhrase.seedPhrase,
     });
-
-    // Save the new token account to the database
-    await newNativeAccount.save();
-
-    // Add the token account to the new account's tokenAccounts array
-    newAccount.vrtAccount = newNativeAccount._id;
-
-
-    // Save the updated account to the database
-    await newAccount.save();
-
-    // Respond with the newly created account data
-    res.status(201).json(newAccount);
   } catch (error) {
     next(error);
   }
 });
+
+
+
 
 router.post('/airdrop', async (req, res) => {
   try {
