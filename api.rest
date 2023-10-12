@@ -2,12 +2,9 @@
 GET http://localhost:4300/api/v1/gamer/
 
 ###
-// get all gamers
-GET https://planet-virtron-api-production.up.railway.app/api/v1/gamer/
-
-###
 // get all accounts
 GET http://localhost:4300/api/v1/account
+Authorization: BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJnYW1lciI6eyJfaWQiOiI2NTI3ZGIwNzllYTczMjBjNGU4ODEwM2UiLCJnYW1lclRhZyI6IkxhbWFyIiwiZW1haWwiOiJsYW1hcmFudGhvbnlob2xkaW5nc0BnbWFpbC5jb20iLCJ2ZXJpZmllZCI6dHJ1ZSwiZmlnaHRlcnMiOltdfSwiaWF0IjoxNjk3MTI3NTk5LCJleHAiOjE2OTk3MTk1OTl9.i-NP3KUhYDLMaHEikCCk1XAlLQ4_MmLN7lZXZekVCoQ
 
 ###
 // create a new account 
@@ -21,7 +18,7 @@ Content-Type: application/json
 
 {
   "gamerTag": "Lamar",
-  "accountId": "6527d693ac863aeecd5eede9"
+  "accountId": "6527db449ea7320c4e88104a"
 }
 
 ###
@@ -64,7 +61,7 @@ Content-Type: application/json
 
 {
   "email": "lamaranthonyholdings@gmail.com",
-  "otp": "6133"
+  "otp": "4819"
 }
 
 ###
@@ -73,7 +70,7 @@ POST http://localhost:4300/api/v1/gamer
 Content-Type: application/json
 
 {
-  "gamerTag": "Vince",
+  "gamerTag": "Lamar",
   "password": "12345678"
 }
 
@@ -126,18 +123,13 @@ Content-Type: application/json
     "address":"bRT1jCHNK5nb46R4tpkhgVX7GnwMTrSLZTfrxacpHACP",
     "uri":"https://virtronesports.com/img/IBFBelt.png",
     "symbol": "BNV",
-    "name": "birtue",
+    "name": "Boxing Nation Virtron",
     "mintAuthority": "7T6C4Es9QhcWMEVXvPpsnyzvrPj2SYUVvhgF49wRYg2e",
     "freezeAuthority": "7T6C4Es9QhcWMEVXvPpsnyzvrPj2SYUVvhgF49wRYg2e",
     "supply": "1000000000",
     "balance": "1000000000",
     "type": "Gaming Token"
   }
-
-###
-//creat a new account
-POST http://localhost:4300/api/v1/account
-Content-Type: application/json
 
 ###
 // Auth route

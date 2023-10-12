@@ -7,14 +7,13 @@ const TokenAccount = require("./../token_account/model");
 const Account = require("./model");
 const VRT = require("./../VRT/model");
 const SeedPhrase = require("./../seedPhrase/model");
-const VRTAccount = require("./../vrtAccount/model");
 
 const auth = require("./../../middleware/auth");
 
 // get all accounts
-router.get("/", async (req, res, next) => {
+router.get("/", auth, async (req, res, next) => {
   try {
-    const accounts = await Account.find();
+    const accounts = await Account.find().select("publicKey tokenAccounts transactions vrtBalance");
     res.json(accounts);
   } catch (error) {
     next(error);
@@ -22,7 +21,7 @@ router.get("/", async (req, res, next) => {
 });
 
 // Create a new NativeTokenAccount
-router.post("/", async (req, res, next) => {
+router.post("/", auth, async (req, res, next) => {
   try {
     // Generate a new key pair and seed phrase
     const keypair = Keypair.generate();
@@ -42,9 +41,6 @@ router.post("/", async (req, res, next) => {
       publicKey: keypair.publicKey,
       privateKey: keypair.privateKey,
     });
-
-    // Generate a new public key for the token account
-    const tokenAccountPublicKey = Keypair.generate().publicKey;
 
     // Save the new account to the database
     await newAccount.save();
