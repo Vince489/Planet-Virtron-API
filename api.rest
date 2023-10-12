@@ -10,7 +10,15 @@ GET http://localhost:4300/api/v1/account
 POST http://localhost:4300/api/v1/account/
 Content-Type: application/json
 
+###
+// add account to gamer
+POST http://localhost:4300/api/v1/gamer/add-account
+Content-Type: application/json
 
+{
+  "gamerTag": "Lamar",
+  "accountId": "6527d693ac863aeecd5eede9"
+}
 
 ###
 // initialize VRT coin
@@ -40,7 +48,7 @@ POST http://localhost:4300/api/v1/gamer/signup
 Content-Type: application/json
 
 {
-  "gamerTag": "Look",
+  "gamerTag": "Lamar",
   "email": "lamaranthonyholdings@gmail.com",
   "password": "12345678"
 }
@@ -52,7 +60,7 @@ Content-Type: application/json
 
 {
   "email": "lamaranthonyholdings@gmail.com",
-  "otp": "1327"
+  "otp": "6133"
 }
 
 ###
@@ -107,7 +115,7 @@ Content-Type: application/json
 
 ###
 // create token
-POST http://localhost:4040/api/v1/token
+POST http://localhost:4300/api/v1/token
 Content-Type: application/json
 
 {

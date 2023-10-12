@@ -4,7 +4,7 @@ const auth = require("../../middleware/auth");
 const Token = require("./model");
 
 // Create token 
-router.post('/', auth, async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     // Validate input data
     const { address, uri, symbol, name, mintAuthority, freezeAuthority, decimals, supply, balance, type } = req.body;

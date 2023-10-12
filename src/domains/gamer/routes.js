@@ -6,6 +6,7 @@ const { sendVerificationOTPEmail } = require("./../email_verification/controller
 const createJWT = require("../../utils/createJWT");
 const Gamer = require("./model");
 const verifyToken = require('../../middleware/auth');
+const Account = require("../account/model");
 
 
 // Sign-up route
