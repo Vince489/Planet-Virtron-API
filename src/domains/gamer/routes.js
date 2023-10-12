@@ -193,7 +193,8 @@ router.post('/logout', (req, res) => {
   }
 });
 
-// add account to gamers account
+
+// Add account to gamer
 router.post("/add-account", async (req, res, next) => {
   try {
     const { gamerTag, accountId } = req.body;
